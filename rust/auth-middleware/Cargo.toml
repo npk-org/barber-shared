@@ -1,0 +1,29 @@
+[package]
+name = "barber-auth-middleware"
+version = "0.1.0"
+edition = "2021"
+description = "JWT verification Tower layer + Axum extractor for barber-svc internal use."
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+async-trait = "0.1"
+axum = "0.7"
+tower = "0.5"
+tower-layer = "0.3"
+tower-service = "0.3"
+http = "1"
+http-body = "1"
+http-body-util = "0.1"
+jsonwebtoken = "9"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+tokio = { version = "1", features = ["sync", "time"] }
+redis = { version = "0.27", features = ["tokio-comp"] }
+tracing = "0.1"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }

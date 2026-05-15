@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package barber.payment.v1;
+
+option go_package = "github.com/napakornsk/barber-shared/go/paymentpb";
+
+service PaymentService {
+  rpc AuthorizePayment(AuthorizeRequest) returns (AuthorizeResponse);
+  rpc CapturePayment(CaptureRequest) returns (CaptureResponse);
+  rpc RefundPayment(RefundRequest) returns (RefundResponse);
+  rpc GetPaymentIntent(GetPaymentIntentRequest) returns (GetPaymentIntentResponse);
+}
+
+enum PaymentStatus {
+  PAYMENT_STATUS_UNSPECIFIED = 0;
+  PENDING = 1;
+  SUCCEEDED = 2;
+  FAILED = 3;
+  REFUNDED = 4;
+}
+
+message AuthorizeRequest {
+  string booking_id = 1;
+  string customer_id = 2;
+  int64 amount_satang = 3;
+  string idempotency_key = 4;
+  string trace_id = 5;
+}
+
+message AuthorizeResponse {
+  string payment_intent_id = 1;
+  PaymentStatus status = 2;
+  string failure_reason = 3;
+}
+
+message CaptureRequest {
+  string payment_intent_id = 1;
+  string trace_id = 2;
+}
+
+message CaptureResponse {
+  PaymentStatus status = 1;
+}
+
+message RefundRequest {
+  string payment_intent_id = 1;
+  int64 amount_satang = 2;
+  string trace_id = 3;
+}
+
+message RefundResponse {
+  PaymentStatus status = 1;
+}
+
+message GetPaymentIntentRequest {
+  string payment_intent_id = 1;
+  string trace_id = 2;
+}
+
+message GetPaymentIntentResponse {
+  string payment_intent_id = 1;
+  string booking_id = 2;
+  int64 amount_satang = 3;
+  PaymentStatus status = 4;
+}
