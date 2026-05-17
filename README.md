@@ -33,23 +33,23 @@ git tag rust-auth-middleware-v1.0.0
 ## Consuming from a Go service
 
 ```bash
-go get github.com/napakornsk/barber-shared/go/authmiddleware@v1.0.0
-go get github.com/napakornsk/barber-shared/go/natsschemas@v0.3.1
-go get github.com/napakornsk/barber-shared/go/paymentpb@v0.2.0
+go get github.com/npk-org/barber-shared/go/authmiddleware@v1.0.0
+go get github.com/npk-org/barber-shared/go/natsschemas@v0.3.1
+go get github.com/npk-org/barber-shared/go/paymentpb@v0.2.0
 ```
 
 ## Private repo setup (per dev machine + CI runner)
 
 ```bash
-go env -w GOPRIVATE=github.com/napakornsk/*
-git config --global url."git@github.com:napakornsk/".insteadOf "https://github.com/napakornsk/"
+go env -w GOPRIVATE=github.com/npk-org/*
+git config --global url."git@github.com:npk-org/".insteadOf "https://github.com/npk-org/"
 ```
 
 ## Consuming from Rust (auth-svc)
 
 ```toml
 [dependencies]
-barber-auth-middleware = { git = "ssh://git@github.com/napakornsk/barber-shared.git", tag = "rust-auth-middleware-v1.0.0" }
+barber-auth-middleware = { git = "ssh://git@github.com/npk-org/barber-shared.git", tag = "rust-auth-middleware-v1.0.0" }
 ```
 
 ## Regenerating protobuf

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package barber.payment.v1;
 
-option go_package = "github.com/napakornsk/barber-shared/go/paymentpb";
+option go_package = "github.com/npk-org/barber-shared/go/paymentpb";
 
 service PaymentService {
   rpc AuthorizePayment(AuthorizeRequest) returns (AuthorizeResponse);

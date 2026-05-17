@@ -1,3 +1,3 @@
-module github.com/napakornsk/barber-shared/go/natsschemas
+module github.com/npk-org/barber-shared/go/natsschemas
 
 go 1.23

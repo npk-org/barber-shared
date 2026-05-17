@@ -1,4 +1,4 @@
-module github.com/napakornsk/barber-shared/go/authmiddleware
+module github.com/npk-org/barber-shared/go/authmiddleware
 
 go 1.23
 
