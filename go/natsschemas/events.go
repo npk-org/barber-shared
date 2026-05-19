@@ -46,6 +46,7 @@ const (
 	SubjectPaymentFailed    = "payment.failed"
 	SubjectPaymentRefunded  = "payment.refunded"
 
+	SubjectUserCreated   = "user.created"
 	SubjectUserUpdated   = "user.updated"
 	SubjectUserSuspended = "user.suspended"
 
@@ -148,6 +149,18 @@ type PaymentRefundedPayload struct {
 	PaymentIntentID string `json:"payment_intent_id"`
 	BookingID       string `json:"booking_id"`
 	AmountSatang    int64  `json:"amount_satang"`
+}
+
+// UserCreatedPayload is emitted by auth-svc immediately after phone OTP
+// verification succeeds. Downstream services (barber-svc) use it to lazy-
+// create their role-specific rows so the user appears in their domain.
+type UserCreatedPayload struct {
+	UserID      string `json:"user_id"`
+	Role        string `json:"role"` // customer | barber | shop_owner | admin
+	DisplayName string `json:"display_name"`
+	Language    string `json:"language"`
+	Email       string `json:"email"`
+	Phone       string `json:"phone"`
 }
 
 type UserUpdatedPayload struct {
